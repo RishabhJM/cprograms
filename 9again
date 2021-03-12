@@ -1,0 +1,181 @@
+include<stdio.h>
+
+#include<string.h>
+
+#include<stdlib.h>
+
+
+
+struct address
+
+{
+
+    int address_id;
+
+    char name[30];
+
+    int street_no;
+
+    char city_name[10];
+
+    float zip_code;        
+
+}node[10];
+
+void add_entry(int address_id, char *name, int street_no, char *city_name, float zip_code);
+
+    void delete_entry(int address_id);
+
+    void display();
+
+int i=0;
+
+void add_entry(int address_id, char *name, int street_no, char *city_name, float zip_code)
+
+{
+
+    node[i].address_id=address_id;
+
+    strcpy(node[i].name, name);
+
+    node[i].street_no=street_no;
+
+    strcpy(node[i].city_name, city_name);
+
+    node[i].zip_code=zip_code;
+
+    i++;
+
+}
+
+void delete_entry(int address_id)
+
+{
+
+    int j=0;
+
+    while(node[j].address_id!=address_id)
+
+    j++;
+
+    node[j].address_id=0;
+
+    strcpy(node[j].name,"\0");
+
+    node[j].street_no=0;
+
+    strcpy(node[j].city_name,"\0");
+
+    node[j].zip_code=0;
+
+}
+
+void display()
+
+{
+
+    printf("\nAddress ID | Name\t\t | Street No. \t | City \t| ZIP Code\t |");
+
+    for(int k=0;k<i;k++)
+
+    {
+
+        
+
+        printf("\n %d \t | %s\t\t | %d \t\t | %s \t| %f\t |", node[k].address_id, node[k].name, node[k].street_no, node[k].city_name, node[k].zip_code);
+
+    }
+
+}
+
+int main()
+
+{
+
+    int address_id;
+
+    char name[30];
+
+    int street_no;
+
+    char city_name[10];
+
+    float zip_code;
+
+    int choice;
+
+    do
+
+    {
+
+        printf("\nMAIN MENU");
+
+        printf("\n1. Add mailing address");
+
+        printf("\n2. Delete mailing address");
+
+        printf("\n3. Display all entries");
+
+        printf("\n4. Clear screen");
+
+        printf("\n5. Exit");
+
+        printf("\n\nEnter your choice: ");
+
+        scanf("%d", &choice);   
+
+        switch(choice)
+
+        {
+
+            case 1: printf("\nEnter the address ID: ");
+
+                    scanf("%d", &address_id);
+
+                    printf("\nEnter the name: ");
+
+                    scanf(" %s", &name);
+
+                    printf("\nEnter the street no. : ");
+
+                    scanf("%d", &street_no);
+
+                    printf("\nEnter the city name : ");
+
+                    scanf(" %s", &city_name);
+
+                    printf("\nEnter the ZIP code: ");
+
+                    scanf("%f", &zip_code);
+
+                    add_entry(address_id,name,street_no,city_name,zip_code);
+
+                    break;
+
+            case 2: printf("\nEnter the address ID you want to delete: ");
+
+                    scanf("%d", &address_id);
+
+                    delete_entry(address_id);
+
+                    break;
+
+            case 3: display();
+
+                    break;
+
+            case 4: system("cls");
+
+                    break;
+
+            case 5: exit(0);
+
+
+
+            default: printf("\nPlease enter a valid choice...");            
+
+        }
+
+}while(choice!=5);
+
+return 0;
