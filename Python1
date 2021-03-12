@@ -1,0 +1,35 @@
+s=input("Enter a string\n")
+
+lc=0
+
+uc=0
+
+dig=0
+
+sp=0
+
+for i in s:
+
+    if(i.isupper())==True:
+
+        uc+=1
+
+    elif(i.islower())==True:
+
+        lc+=1
+
+    elif(i.isdigit())==True:
+
+        dig+=1
+
+    else:
+
+        sp+=1            
+
+print("Number of uppercase characters are",uc)   
+
+print("Number of lowercase characters are",lc)   
+
+print("Number of digits are",dig)   
+
+print("Number of special characters are",sp)
